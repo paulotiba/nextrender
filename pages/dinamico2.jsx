@@ -1,7 +1,7 @@
 // gera o conteúdo somente no servidor 
 
-export async function getStaticProps() {
-    console.log('[servidor] gerando so servidor')
+export async function getServerSideProps() {
+    // console.log('[servidor] gerando so servidor')
   const resp = await fetch("http://localhost:3000/api/produtos");
   const produtos = await resp.json();
 
@@ -12,10 +12,10 @@ export async function getStaticProps() {
   };
 }
 
-export default function estatico04(props) {
+export default function dinamico2(props) {
   function renderizarProdutos() {
     return props.produtos.map((produto) => {
-        console.log('[cliente], renderizando o componente!!')
+        // console.log('[cliente], renderizando o componente!!')
       return (
         <li key={produto.id}>
           {produto.id} - {produto.nome} tem preço de R${produto.preco}
@@ -25,7 +25,7 @@ export default function estatico04(props) {
   }
   return (
     <div>
-      <h1>Estático #04</h1>
+      <h1>Dinâmico #02</h1>
       <ul>
           {renderizarProdutos()}
       </ul>
